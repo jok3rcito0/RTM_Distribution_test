@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prueba de Ordenación</title>
+</head>
+<body>
+    <script>
+        function ordenarPorPropiedad(array, propiedad) {
+            return array.slice().sort((a, b) => {
+                const valorA = a[propiedad];
+                const valorB = b[propiedad];
+                
+                if (typeof valorA === 'string' && typeof valorB === 'string') {
+                    return valorA.localeCompare(valorB, undefined, { sensitivity: 'base' });
+                } else {
+                    return valorA - valorB;
+                }
+            });
+        }
+
+        const personas = [
+            { nombre: "Juan", edad: 30 },
+            { nombre: "Ana", edad: 25 },
+            { nombre: "Pedro", edad: 35 },
+            { nombre: "María", edad: 28 }
+        ];
+
+const personasOrdenadasPorEdad = ordenarPorPropiedad(personas, "edad");
+
+console.log('Edad');
+console.log(personasOrdenadasPorEdad);
+
+const personasOrdenadasPorNombre = ordenarPorPropiedad(personas, "nombre");
+console.log('Nombre');
+console.log(personasOrdenadasPorNombre);
+
+
+  </script>
+</body>
+</html>
